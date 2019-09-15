@@ -15,7 +15,7 @@ class TranslationViewset(viewsets.ModelViewSet):
     @action(methods=["get"], detail=False, url_path='get-words')
     def get_words(self, request, *args, **kwargs):
         words = request.data['words']
-        words = text.split()
+        words = words.split()
         result = []
         for word in words:
             try:
