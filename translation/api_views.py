@@ -22,7 +22,7 @@ class TranslationViewset(viewsets.ModelViewSet):
                 word = models.Translation.filter(word=word).first()
             except:
                 word = None
-            if not word:
+            if word:
                 result.append({"word":word.word, "meaning": word.meaning, "example": word.example})
 
         return Response(result, HTTP_200_OK)
