@@ -12,9 +12,9 @@ class TranslationViewset(viewsets.ModelViewSet):
     serializer_class = serializers.TranslationSerializer
     filterset_fields = ('word', 'id',)
 
-    @action(methods=["get"], detail=False, url_path='get-words')
+    @action(methods=["post"], detail=False, url_path='get-words')
     def get_words(self, request, *args, **kwargs):
-        words = request.data['words']
+        words = request.GET['words']
         words = words.split()
         result = []
         for word in words:
