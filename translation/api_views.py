@@ -19,12 +19,15 @@ class TranslationViewset(viewsets.ModelViewSet):
         result = []
         print('words', words)
         for word in words:
+            print('word', word)
             try:
-                word = models.Translation.filter(word=word).first()
+                word_ = models.Translation.filter(word=word).first()
             except:
-                word = None
-            if word:
-                result.append({"word":word.word, "meaning": word.meaning, "example": word.example})
+                word_ = None
+            print('word_', word_)
+            if word_:
+                print('elo')
+                result.append({"word":word_.word, "meaning": word_.meaning, "example": word_.example})
 
         return Response(result, HTTP_200_OK)
 
