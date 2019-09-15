@@ -17,6 +17,7 @@ class TranslationViewset(viewsets.ModelViewSet):
         words = request.data['words']
         words = words.split()
         result = []
+        print('words', words)
         for word in words:
             try:
                 word = models.Translation.filter(word=word).first()
