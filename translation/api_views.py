@@ -17,16 +17,12 @@ class TranslationViewset(viewsets.ModelViewSet):
         words = request.data['words']
         words = words.split()
         result = []
-        print('words', words)
         for word in words:
-            print('word', word)
             try:
-                word_ = models.Translation.filter(word=word).first()
+                word_ = models.Translation.objects.filter(word=word).first()
             except:
                 word_ = None
-            print('word_', word_)
             if word_:
-                print('elo')
                 result.append({"word":word_.word, "meaning": word_.meaning, "example": word_.example})
 
         return Response(result, HTTP_200_OK)
